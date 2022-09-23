@@ -7,7 +7,7 @@ namespace Essai1_InjectionDependance._Spectateur
 {
     public class Spectateur
     {
-        IAfficheur _oAfficheur;
+        private readonly IAfficheur _oAfficheur;
 
         public Spectateur(IAfficheur poAfficheur) //Injection dépendance
         {

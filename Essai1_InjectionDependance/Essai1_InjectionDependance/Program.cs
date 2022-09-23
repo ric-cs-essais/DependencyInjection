@@ -10,9 +10,9 @@ using Essai1_InjectionDependance._Spectateur;
 
 namespace Essai1_InjectionDependance
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
 
             IServiceCollection oServiceCollection = new ServiceCollection();
@@ -70,10 +70,10 @@ namespace Essai1_InjectionDependance
             poServicesCollection
                 .AddSingleton(
                     (IServiceProvider poServiceProvider) =>
-                        EntitiesFactory.getSingleton(MyModeEnum.blackAndWhite).getAfficheur() //IAfficheur ok
-                        //new AfficheurCouleur() //<<< tel quel ne fonctionne pas !
+                        EntitiesFactory.getSingleton(MyConfig.modeActuel).getAfficheur() //IAfficheur ok
+                        //new AfficheurCouleur() //<<<<fonctionne aussi tel quel :)
                 )
-                 //.AddAfficheurCouleurAsSingleton() //<<<<< Méthode d'extension perso. . Ce Add... résultant prendrait le dessus sur le AddSingleton ci-dessus si l'on décommentait, car placé après !
+                //.AddAfficheurCouleurAsSingleton() //<<<<< Méthode d'extension perso. . Ce Add... résultant prendrait le dessus sur le AddSingleton ci-dessus si l'on décommentait, car placé après !
                 .AddSingleton<Spectateur, Spectateur>() //<<<< uniquement pour que la classe Spectateur puisse bénéficier d'une injection de dépendance (grâce à appel ci-dessous à GetService<Spectateur>())
                                                         //Parce-que Spectateur est la première classe que l'on va instancier, le point départ des autres instanciations automatiques.
                 ;

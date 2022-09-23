@@ -5,7 +5,7 @@ namespace Essai1_InjectionDependance
 {
     public class EntitiesFactory
     {
-        private MyModeEnum _myMode;
+        private readonly MyModeEnum _myMode;
 
         public static EntitiesFactory getSingleton(MyModeEnum myMode)
         {
