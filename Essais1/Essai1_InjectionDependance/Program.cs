@@ -35,6 +35,7 @@ namespace Essai1_InjectionDependance
 
                 .AddTransient<Spectateur, Spectateur>() //<<<< uniquement pour que la classe Spectateur puisse bénéficier d'une injection de dépendance (grâce à appel ci-dessous à GetService<Spectateur>())
                                                         //Parce-que Spectateur est la première classe que l'on va instancier, le point départ des autres instanciations automatiques.
+                //.AddTransient<Spectateur>() //<<< Autre Syntaxe possible équivalente à .AddTransient<Spectateur, Spectateur>()
                 ;
 
             IServiceProvider oServicesProvider = poServicesCollection.BuildServiceProvider();
@@ -76,6 +77,7 @@ namespace Essai1_InjectionDependance
                 //.AddAfficheurCouleurAsSingleton() //<<<<< Méthode d'extension perso. . Ce Add... résultant prendrait le dessus sur le AddSingleton ci-dessus si l'on décommentait, car placé après !
                 .AddSingleton<Spectateur, Spectateur>() //<<<< uniquement pour que la classe Spectateur puisse bénéficier d'une injection de dépendance (grâce à appel ci-dessous à GetService<Spectateur>())
                                                         //Parce-que Spectateur est la première classe que l'on va instancier, le point départ des autres instanciations automatiques.
+                //.AddSingleton<Spectateur>() //<<< Autre Syntaxe possible équivalente à .AddSingleton<Spectateur, Spectateur>()
                 ;
 
             IServiceProvider oServicesProvider = poServicesCollection.BuildServiceProvider();
